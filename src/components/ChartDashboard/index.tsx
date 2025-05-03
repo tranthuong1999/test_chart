@@ -86,10 +86,12 @@ const chartOptions: ApexOptions = {
                     style: {
                         color: 'black',
                         background: '#fff',
-                        fontWeight: 'bold',
+                        fontWeight: 'bold'
                     },
                     offsetY: -20,
                     offsetX: 25,
+                    borderRadius: 50,
+                    borderWidth: 1
                 }
             }
         ],
