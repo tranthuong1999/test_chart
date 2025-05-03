@@ -9,9 +9,19 @@ const chartOptions: ApexOptions = {
         id: 'revenue-bar',
         animations: { enabled: false },
     },
-    colors: ['#5B7DB1', '#000', '#5B7DB1'],
+    colors: [
+        function ({ seriesIndex, dataPointIndex, w }: { seriesIndex: number; dataPointIndex: number; w: any }) {
+            if (seriesIndex === 1 && dataPointIndex >= 9) {
+                return '#9D9EA0'; // Red for Jan, Feb, Mar in "Revenue Budgeted"
+            }
+            return seriesIndex === 0 ? '#5B7DB1' : '#9D9EA0';
+        }
+    ],
     xaxis: {
         categories: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar'],
+        labels: {
+            show: false
+        }
     },
     yaxis: {
         labels: {
@@ -56,7 +66,7 @@ const chartOptions: ApexOptions = {
             return val !== null ? val : '';
         }
     },
-    legend: { 
+    legend: {
         show: true,
         position: 'top'
     },
